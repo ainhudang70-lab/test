@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tam ca</title>
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 99.999999999999%;
+    height: 60px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;   /* hiệu ứng mượt */
+}
+
+/* Khi di chuột vào */
+.navbar a:hover {
+    transform: scale(1.1);       /* phóng to nhẹ */
+    color: #0087d7;              /* sáng hơn */
+}
+
+/* Khi đang nhấn chuột */
+.navbar a:active {
+    transform: scale(1.15);
+    color: #00aaff;
+}
+
+/* ===== HERO ===== */
+.banner {
+    height: 100vh;              /* chiếm trọn màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* căn giữa theo chiều dọc */
+    align-items: center;        /* căn giữa ngang */
+    text-align: center;
+    padding-top: 60px;          /* tránh navbar che */
+    box-sizing: border-box;
+
+    background-image:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("anhtrangchu.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.banner h1 {
+    background: rgba(255,255,255,0.9);
+    width: 80%;
+    padding: 60px 0;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.banner p {
+    color: white;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+/* ===== GLASS CONTENT ===== */
+.content-wrapper {
+    background-image:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("anhnen.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.content {
+    width: 80%;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: white;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: #d6eaf8;
+    text-align: center;
+    color: #1c2833;
+    padding: 40px 0;
+    font-size: 20px;
+}
+/* màu mè hoa lá hẹ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+
+    width: 70%;
+    max-width: 900px;
+
+    animation: slideUp 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* ====ảnh==== */
+.gallery {
+    margin-top: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+
+    justify-items: center;
+}
+.gallery img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div><strong>3T</strong></div>
+    <div>
+        <a href="#trangchu">Trang chủ</a>
+        <a href="#gioithieu">Giới thiệu</a>
+        <a href="#lienhe">Liên hệ</a>
+    </div>
+</header>
+
+<div class="banner" id="trangchu">
+    <h1>Tam Thái Tử - Lớp 12.1 - THPT Huỳnh Văn Nghệ</h1>
+    <p class="subtitle">Kỉ niệm đẹp của chúng mình ở xứ sở ngàn hoa</p>
+</div>
+
+<div class="content-wrapper" id="gioithieu">
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    <h3 onclick="openModal('dalat')" style="cursor:pointer;"><u> Chợ đêm Đà Lạt</u></h3>
+                    <p>Mô tả.</p>
+                </td>
+                <td>
+                    <img src="anhngoaihai.jpg" width="100%">
+                </td>
+            </tr>
+            <tr>
+                <td>
+		   <img src="nenmongo.jpg" width="100%">
+		</td>
+		<td>
+		   <h3 onclick="openModal('thethao')" style="cursor:pointer;"><u>Mongoland</u></h3>
+		   <p>mô tả 1.</p>
+		</td>
+	     </tr>
+	     <tr>
+		<td>
+		   <h3 onclick="openModal('nghethuat')" style="cursor:pointer;"><u>Đi dạo đêm - ngắm nhìn phong cảnh</u></h3>
+		   <p>mô tả n.</p>
+		</td>
+		<td>
+		   <img src="anhngoaiba.jpg" width="100%">
+		</td>
+	      </tr>
+
+        </table>
+    </div>
+</div>
+
+<div class="footer" id="lienhe">
+    <p>gmail: THPT Huỳnh Văn Nghệ</p>
+    <p><strong>Liên hệ:</strong> Đặng Ái Như - 25</p>
+             <p>Nguyễn Thị Diễm Quỳnh - 26</p>
+             <p>Đỗ Thị Mỹ Duyên - 07</p>
+             <p>Lớp 12.1</p>
+</div>
+
+<div id="gameModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+
+        <!-- Khu vực ảnh -->
+        <div id="modalGallery" class="gallery"></div>
+
+    </div>
+</div>
+
+<script>
+
+function openModal(type) {
+
+    const title = document.getElementById("modalTitle");
+    const text = document.getElementById("modalText");
+    const gallery = document.getElementById("modalGallery");
+
+    gallery.innerHTML = ""; // reset ảnh cũ
+
+    if (type === "dalat") {
+        title.innerText = "Chợ đêm Đà Lạt";
+        text.innerText = "Những khoảnh khắc đáng nhớ tại Đà Lạt.";
+
+        gallery.innerHTML += `<img src="anhmot.jpg">`;
+        gallery.innerHTML += `<img src="dalat2.jpg">`;
+        gallery.innerHTML += `<img src="dalat3.jpg">`;
+    }
+
+    if (type === "thethao") {
+        title.innerText = "Mongoland";
+        text.innerText = "Những hoạt động vui chơi.";
+
+        gallery.innerHTML += `<img src="ththao1.jpg">`;
+        gallery.innerHTML += `<img src="thethao2.jpg">`;
+    }
+
+    if (type === "nghethuat") {
+        title.innerText = "Đi dạo đêm - ngắm nhìn phong cảnh";
+        text.innerText = "Hốc đồ ăn.";
+
+        gallery.innerHTML += `<img src="nghethuat1.jpg">`;
+        gallery.innerHTML += `<img src="nghethuat2.jpg">`;
+    }
+
+    document.getElementById("gameModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("gameModal").style.display = "none";
+}
+</script>
+</body>
+</html>
